@@ -1,4 +1,5 @@
 import { useStyles } from './ButtonStyle';
+import FlexBox from '../Box/FlexBox';
 
 const Buttons = ({ buttonSize }) => {
   const classes = useStyles(buttonSize);
@@ -6,7 +7,7 @@ const Buttons = ({ buttonSize }) => {
   const clickHandler = e => console.log(e.target);
 
   return (
-    <div className={classes.Box}>
+    <FlexBox>
       <button
         className={[classes.Button__size, classes.Button].join(' ')}
         onClick={clickHandler}
@@ -25,7 +26,7 @@ const Buttons = ({ buttonSize }) => {
       >
         {buttonSize}
       </button>
-    </div>
+    </FlexBox>
   );
 };
 
