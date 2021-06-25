@@ -4,18 +4,24 @@ const useStyles = createUseStyles({
   Box: {
     padding: 10,
     margin: 10,
-    width: 450,
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'baseline',
     border: ['1px', 'solid', 'grey'],
   },
+  DynamicValues: props => ({
+    width: props.width || 450,
+  }),
 });
 
-const FlexBox = ({ children }) => {
-  const classes = useStyles();
+const FlexBox = ({ children, ...props }) => {
+  const classes = useStyles(props);
 
-  return <div className={classes.Box}> {children} </div>;
+  return (
+    <div className={[classes.Box, classes.DynamicValues].join(' ')}>
+      {children}
+    </div>
+  );
 };
 
 export default FlexBox;

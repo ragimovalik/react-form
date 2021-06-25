@@ -7,8 +7,14 @@ const Buttons = ({ buttonSize }) => {
   const clickHandler = e => console.log(e.target);
 
   return (
-    <FlexBox>
+    <FlexBox width={500}>
       <button
+        className={[classes.Button__size, classes.Button].join(' ')}
+        onClick={clickHandler}
+      >
+        {buttonSize}
+      </button>
+      {/* <button
         className={[classes.Button__size, classes.Button].join(' ')}
         onClick={clickHandler}
       >
@@ -19,13 +25,7 @@ const Buttons = ({ buttonSize }) => {
         onClick={clickHandler}
       >
         {buttonSize}
-      </button>
-      <button
-        className={[classes.Button__size, classes.Button].join(' ')}
-        onClick={clickHandler}
-      >
-        {buttonSize}
-      </button>
+      </button> */}
     </FlexBox>
   );
 };
