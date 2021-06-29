@@ -1,6 +1,6 @@
 import { useField } from 'formik';
 import PropTypes from 'prop-types';
-import { useStyles } from './InputStyles';
+import { useStyles } from './FormStyles';
 
 /*
   useField() returns
@@ -16,7 +16,9 @@ const FormikInput = ({ label, ...props }) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.Form__input__wrap}>
+    <div
+      className={[classes.Form__input__wrap, classes.DynamicValues].join(' ')}
+    >
       <label className={classes.Form__label} htmlFor={props.id || props.name}>
         {label}
       </label>
@@ -26,7 +28,9 @@ const FormikInput = ({ label, ...props }) => {
         {...field}
         {...props}
       />
-      {meta.touched && meta.error ? <div> {meta.error} </div> : null}
+      {meta.touched && meta.error ? (
+        <div className={classes.ErrorStyle}> {meta.error} </div>
+      ) : null}
     </div>
   );
 };

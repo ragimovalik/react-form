@@ -1,5 +1,13 @@
 import { createUseStyles } from 'react-jss';
 
+/*
+    ======== Should to set text color =========
+
+    DynamicValues: props => ({
+    width: props.width || 450,
+  }),
+ */
+
 export const useStyles = createUseStyles({
   Form__box: {
     display: 'flex',
@@ -13,6 +21,7 @@ export const useStyles = createUseStyles({
     borderRadius: 8,
     backgroundColor: '#f6fafb',
   },
+
   Form__input__wrap: {
     display: 'flex',
     justifyContent: 'center',
@@ -26,15 +35,16 @@ export const useStyles = createUseStyles({
     fontWeight: 400,
     lineHeight: 1.2,
     fontFamily: 'inherit',
-    fontSize: '0.8rem',
+
+    // fontSize: '0.9rem',
   },
-  Item: {
-    marginBottom: 5,
-    padding: 5,
-  },
+  DynamicValues: props => ({
+    fontSize: props || '0.9rem',
+  }),
+
   Form__input: {
     width: '100%',
-    height: '1.2rem',
+    height: '1.4rem',
     outline: 'none',
     border: [2, 'solid', '#e0e8e5' /*'#597387'*/],
     borderRadius: 4,
@@ -45,25 +55,26 @@ export const useStyles = createUseStyles({
       border: [2, 'solid', '#a8beb6' /*'#597387'*/],
     },
   },
+
   Form__label: {
+    width: 70,
     marginRight: 10,
-    // fontSize: '0.8rem',
-    // fontStyle: 'italic',
-    // fontWeight: 400,
-    // lineHeight: 1.2,
-    // fontFamily: 'inherit',
-    // font: 'italic 400 0.8rem/1.2 system-ui',
+    textAlign: 'start',
   },
+
   Form__submit: {
     width: '100%',
-    height: 35,
-    // margin: [0, 5],
+    height: '2.2rem',
     padding: '0.25rem',
     border: [3, 'solid', '#e0e8e5'],
     borderRadius: 8,
     outline: 'none',
 
-    fontSize: '0.9rem',
+    // fontSize: '1rem',
+    // DynamicValues: props => ({
+    //   fontSize: props.fontSize || '0.9rem',
+    // }),
+
     textTransform: 'uppercase',
     fontWeight: 700,
     color: '#FFFFFF',
@@ -76,5 +87,16 @@ export const useStyles = createUseStyles({
     '&:hover, &:focus': {
       transform: 'scale(1.02)',
     },
+  },
+
+  Flex: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  ErrorStyle: {
+    marginLeft: 10,
+    color: '#FF0000',
   },
 });

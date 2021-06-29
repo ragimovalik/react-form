@@ -1,5 +1,7 @@
 import { useField } from 'formik';
 
+import { useStyles } from './FormStyles';
+
 /*
 React treats radios and checkbox inputs
 differently other input types, select, and textarea.
@@ -13,15 +15,23 @@ onChange`, and `onBlur`
 
 const FormikCheckbox = ({ children, ...props }) => {
   const [field, meta] = useField(props, { type: 'checkbox' });
+  const classes = useStyles();
 
   return (
-    <div>
-      <label>
-        <input type="checkbox" {...field} {...props} />
+    <div
+      className={[classes.Form__input__wrap, classes.DynamicValues].join(' ')}
+    >
+      <label className={classes.Flex}>
+        <input
+          style={{ marginRight: 5 }}
+          type="checkbox"
+          {...field}
+          {...props}
+        />
         {children}
       </label>
       {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
+        <div className={classes.ErrorStyle}>{meta.error}</div>
       ) : null}
     </div>
   );

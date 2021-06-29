@@ -1,0 +1,37 @@
+/*
+FORM STYLES
+
+Form__box
+border #e0e8e5
+bgc #f6fafb
+
+Form__input
+border '#e0e8e5'
+border on hover '#a8beb6'
+
+Form__submit
+border '#e0e8e5'
+bgc '#597387'
+color #FFFFFF
+
+ErrorStyle
+color '#FF0000
+*/
+
+/*
+Button '#e0e8e5'
+color: '#FFFFFF',
+backgroundColor: '#597387',
+
+
+*/
+
+/*
+@value bgcPrimary: #e0e8e5;
+@value darkened: #597387;
+@value lightened: #f6fafb;
+@value text: #252b31;
+
+@value white: #ffffff;
+@value red: #ff0000;
+*/

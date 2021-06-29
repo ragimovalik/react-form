@@ -1,19 +1,22 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Formik, Form } from 'formik';
 import { useStyles } from './FormStyles';
 import * as Yup from 'yup';
-// import Input from './Input';
 
 import FormikInput from './FormikInput';
 import FormikCheckbox from './FormikCheckbox';
 import FormikSelect from './FormikSelect';
+import InputButton from './InputButton';
+
+import fontSizeContext from '../../FontSizeContext';
 
 const MyForm = () => {
   const [myName, setMyName] = useState('');
-  const classes = useStyles();
+  const fontSize = useContext(fontSizeContext);
+  const classes = useStyles(fontSize);
 
   return (
-    <>
+    <div>
       <h3 style={{ textAlign: 'center' }}>Forms by Formik</h3>
 
       <Formik
@@ -21,7 +24,7 @@ const MyForm = () => {
           name: '',
           surname: '',
           email: '',
-          messenger: 'yourMessenger',
+          messenger: '',
           accept: false,
         }}
         validationSchema={Yup.object({
@@ -31,7 +34,7 @@ const MyForm = () => {
             .required('Required'),
           surname: Yup.string()
             .min(2, 'Name should be longer')
-            .max(15, 'Maximum 15 characters')
+            .max(15, 'Maximum 20 characters')
             .required('Required'),
           email: Yup.string()
             .email('Invalid email address')
@@ -43,8 +46,8 @@ const MyForm = () => {
             )
             .required('Required'),
           accept: Yup.boolean()
-            .oneOf([true], 'You shoud accept the terms')
-            .required('You should accept the term'),
+            .oneOf([true], 'You should accept the terms')
+            .required('You should accept the terms'),
         })}
         onSubmit={(values, { onSubmitting }) => setMyName(values)}
       >
@@ -52,15 +55,15 @@ const MyForm = () => {
           <FormikInput
             label="Name"
             name="name"
+            placeholder="John"
             // type="text"
-            // placeholder="Name"
             // title="name"
           />
           <FormikInput
             label="Surname"
             name="surname"
+            placeholder="Doe"
             // type="text"
-            // placeholder="Name"
             // title="name"
           />
           <FormikInput
@@ -80,9 +83,8 @@ const MyForm = () => {
           <FormikCheckbox name="accept">
             I accept the terms and conditions
           </FormikCheckbox>
-          <div className={classes.Form__input__wrap}>
-            <input className={classes.Form__submit} type="submit" />
-          </div>
+
+          <InputButton />
         </Form>
       </Formik>
 
@@ -90,7 +92,7 @@ const MyForm = () => {
       <pre>
         <p>{JSON.stringify(myName)}</p>
       </pre>
-    </>
+    </div>
   );
 };
 
