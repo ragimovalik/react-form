@@ -8,16 +8,23 @@ import FormikCheckbox from './FormikCheckbox';
 import FormikSelect from './FormikSelect';
 import InputButton from './InputButton';
 
-import fontSizeContext from '../../FontSizeContext';
+import FontSizeContext from '../../FontSizeContext';
 
 const MyForm = () => {
   const [myName, setMyName] = useState('');
-  const fontSize = useContext(fontSizeContext);
+  const fontSize = useContext(FontSizeContext);
   const classes = useStyles(fontSize);
 
   return (
     <div>
-      <h3 style={{ textAlign: 'center' }}>Forms by Formik</h3>
+      <h3
+        style={{
+          textAlign: 'center',
+          fontSize: fontSize * 1.25 + 'rem',
+        }}
+      >
+        Forms by Formik
+      </h3>
 
       <Formik
         initialValues={{
@@ -79,7 +86,11 @@ const MyForm = () => {
             <option value="telegram">Telegram</option>
             <option value="other">Other</option>
           </FormikSelect>
-
+          {/* 
+          <FormikCheckbox
+            name="accept"
+            text="I accept the terms and conditions"
+          /> */}
           <FormikCheckbox name="accept">
             I accept the terms and conditions
           </FormikCheckbox>

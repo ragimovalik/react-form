@@ -2,6 +2,8 @@ import { useField } from 'formik';
 import PropTypes from 'prop-types';
 import { useStyles } from './FormStyles';
 
+import FontSizeContext from '../../FontSizeContext';
+import { useContext } from 'react';
 /*
   useField() returns
   [formik.getFieldProps(), formik.getFieldMeta()]
@@ -13,7 +15,9 @@ import { useStyles } from './FormStyles';
 
 const FormikInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
-  const classes = useStyles();
+
+  const fontSize = useContext(FontSizeContext);
+  const classes = useStyles(fontSize);
 
   return (
     <div

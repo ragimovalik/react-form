@@ -38,8 +38,9 @@ export const useStyles = createUseStyles({
 
     // fontSize: '0.9rem',
   },
+
   DynamicValues: props => ({
-    fontSize: props || '0.9rem',
+    fontSize: props + 'rem' || 0.9 + 'rem',
   }),
 
   Form__input: {
@@ -69,11 +70,6 @@ export const useStyles = createUseStyles({
     border: [3, 'solid', '#e0e8e5'],
     borderRadius: 8,
     outline: 'none',
-
-    // fontSize: '1rem',
-    // DynamicValues: props => ({
-    //   fontSize: props.fontSize || '0.9rem',
-    // }),
 
     textTransform: 'uppercase',
     fontWeight: 700,

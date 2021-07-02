@@ -1,14 +1,17 @@
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useStyles } from './FormStyles';
-import { useFormikContext } from 'formik';
+
+import FontSizeContext from '../../FontSizeContext';
 
 const InputButton = ({ value }) => {
-  const classes = useStyles();
-  const { values } = useFormikContext();
-  console.log(values);
+  const fontSize = useContext(FontSizeContext);
+  const classes = useStyles(fontSize);
 
   return (
-    <div className={classes.Form__input__wrap}>
+    <div
+      className={[classes.Form__input__wrap, classes.DynamicValues].join(' ')}
+    >
       <input value={value} className={classes.Form__submit} type="submit" />
     </div>
   );
