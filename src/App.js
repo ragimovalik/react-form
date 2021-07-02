@@ -1,79 +1,53 @@
 import React from 'react';
-import PageTitle from './components/PageTitle/PageTitle';
-import MyForm from './components/Forms/';
+import { Route, Switch } from 'react-router-dom';
+
+// import MyForm from './components/Forms/';
 // import Buttons from './components/Buttons';
+import Radio from './components/Forms/Radio';
+import Nav from './components/Nav/Nav';
 
 import FontSizeContext from './FontSizeContext';
 
+import { routes } from './routes';
+
+const number = 0.9;
+
 function App() {
-  const [fontSize, setFontSize] = React.useState('1rem');
+  const [fontSize, setFontSize] = React.useState(number);
 
   const handleChange = event => {
-    setFontSize(event.target.value);
+    setFontSize(Number(event.target.value));
   };
 
   return (
     <FontSizeContext.Provider value={fontSize}>
-      <PageTitle title="New App File" />
-      <div
-        style={{
-          width: 200,
-          textAlign: 'center',
-          margin: '0 auto',
-          padding: 10,
-          fontSize: '0.6rem',
-        }}
-      >
-        <fieldset
-          style={{
-            display: 'flex',
-            justifyContent: 'space-around',
-            alignItems: 'center',
-          }}
-        >
-          <legend> FontSize </legend>
+      <Nav>
+        <Radio handleChange={handleChange} fontSize={fontSize} />
+      </Nav>
 
-          <label>
-            <span>Little</span>
-            <input
-              type="radio"
-              value="0.8rem"
-              name="fontSize"
-              checked={fontSize === '0.8rem'}
-              onChange={handleChange}
+      <Switch>
+        {routes.map(({ exact, path, component: Component, title }) => {
+          return (
+            <Route
+              key={title}
+              path={path}
+              component={Component}
+              title={title}
+              exact={exact}
             />
-          </label>
+          );
+        })}
+      </Switch>
 
-          <label>
-            <span>Middle</span>
-            <input
-              type="radio"
-              value="1rem"
-              name="fontSize"
-              checked={fontSize === '1rem'}
-              onChange={handleChange}
-            />
-          </label>
-
-          <label>
-            <span>Large</span>
-            <input
-              type="radio"
-              value="1.2rem"
-              name="fontSize"
-              checked={fontSize === '1.2rem'}
-              onChange={handleChange}
-            />
-          </label>
-        </fieldset>
-      </div>
-
-      <MyForm />
-      {/* <Buttons buttonSize={'large'} /> */}
-      {/* <Buttons /> */}
-      {/* <Buttons buttonSize={'small'} /> */}
+      {/* <MyForm /> */}
     </FontSizeContext.Provider>
   );
 }
 
 export default App;
+
+/*
+<Buttons buttonSize={'large'} />
+<Buttons />
+<Buttons buttonSize={'small'} />
+*/
