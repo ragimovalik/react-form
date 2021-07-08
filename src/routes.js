@@ -1,6 +1,7 @@
 import HomePage from './pages/Home';
 import ContactsPage from './pages/AllContacts';
 import NewContactPage from './pages/NewContact';
+import VideoPage from './pages/VideoPage';
 
 export const routes = [
   {
@@ -20,5 +21,11 @@ export const routes = [
     title: 'All Contacts',
     exact: true,
     component: ContactsPage,
+  },
+  {
+    path: '/video',
+    title: 'Video',
+    exact: true,
+    component: VideoPage,
   },
 ];
